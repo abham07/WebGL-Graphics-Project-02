@@ -1,0 +1,137 @@
+<!--
+*
+* GAME: SHARKSHOOTER 3D
+* CERATORS: ABAD HAMEED & SHAHOOD MIRZA
+* COMP4471: PROJECT 2 - PROF. BENSON
+* 02-12-2015
+*
+-->
+<!DOCTYPE html>
+<html>
+    <title>SHARKSHOOTER 3D</title>
+    
+    <!-- 
+    <center>
+    <button id = "Button1">Increase Z</button>
+    <button id = "Button2">Decrease Z</button>
+    <button id = "Button3">Increase R</button>
+    <button id = "Button4">Decrease R</button>
+    
+    <button id = "Button5">Increase theta</button>
+    <button id = "Button6">Decrease theta</button>
+    <button id = "Button7">Increase phi</button>
+    <button id = "Button8">Decrease phi</button>
+    </center>
+    -->
+    
+    <script id="vertex-shader" type="x-shader/x-vertex">
+    attribute  vec4 vPosition;
+    attribute  vec4 vColor;
+    varying vec4 fColor;
+        
+    uniform mat4 modelViewMatrix;
+    uniform mat4 projectionMatrix;
+
+    void main() 
+    {
+        gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+        fColor = vColor;
+    } 
+    </script>
+    
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    precision mediump float;
+    varying vec4 fColor;
+
+    void main()
+    {
+        gl_FragColor = fColor;
+    }
+    </script>
+    
+    <script type="text/javascript" src="webgl-utils.js"></script>
+    <script type="text/javascript" src="initShaders.js"></script>
+    <script type="text/javascript" src="MV.js"></script>
+    <script type="text/javascript" src="Sharkshooter3D.js"></script>
+    
+    <body  bgcolor="#00A2E8">
+        <center>
+        <!--
+            <table style="width:50%">
+                <tr>
+                    <td>Theta: </td>
+                    <td><p id="theta"></p></td>
+                    <td>A-Theta: </td>
+                    <td><p id="atheta"></p></td>
+                </tr>
+                <tr>
+                    <td>Shark At: </td>
+                    <td><p id="sharkDir"></p></td>
+                    <td>User Facing: </td>
+                    <td><p id="usrDir"></p></td>
+                </tr>
+                <tr>
+                    <td>phi</td>
+                    <td>radius</td>
+                    <td>near</td>
+                    <td>far</td>
+                </tr>
+                <tr>
+                    <td><p id="phi"></td>
+                    <td><p id="radius"></p></td>
+                    <td><p id="near"></td>
+                    <td><p id="far"></p></td>
+                </tr>
+                <tr>
+                    <td>Wall 1</td>
+                    <td>Wall 2</td>
+                    <td>Wall 3</td>
+                    <td>Wall 4</td>
+                    <td>Wall 5</td>
+                    <td>Wall 6</td>
+                </tr>
+                <tr>
+                    <td><p id="wall1"></td>
+                    <td><p id="wall2"></p></td>
+                    <td><p id="wall3"></td>
+                    <td><p id="wall4"></p></td>
+                    <td><p id="wall5"></p></td>
+                    <td><p id="wall6"></p></td>
+                </tr>
+            </table>
+             -->
+
+            <h1><b>SHARKSHOOTER 3D</b></h1>
+            <h5>Created By: Abad Hameed & Shahood Mirza</h5>
+            
+            <table>
+                <tr>
+                    <td>Score: </td>
+                    <td><p id="score"></p></td>
+                    <td> | </td>
+                    <td>Sharks Killed: </td>
+                    <td><p id="sharksKilled"></p></td>
+                </tr>
+            </table>
+            
+            <canvas  style="float:center" id="gl-canvas" width="512" height="512">
+                Oops ... your browser doesn't support the HTML5 canvas element
+            </canvas>
+        </center>
+        
+    <canvas style="float:left" id="canvas" width="300" height="100"></canvas>
+    <!-- 
+    <div style="float:left">
+        <div><button id="manyAtOnce">Test Shark Explosion</button></div>
+    </div>
+
+    <script type="text/javascript" src="Particle.js"></script>
+    <script type="text/javascript" src="sandbox.js"></script>
+    <script type="text/javascript">
+        ps.sandbox.init();
+        ps.sandbox.go();
+    </script>
+    -->
+        
+    </body>
+</html>
